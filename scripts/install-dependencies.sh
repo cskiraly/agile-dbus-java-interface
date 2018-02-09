@@ -5,13 +5,8 @@
 #!bin/sh
 
 CURRDIR=`pwd`
-DEPS=$CURRDIR/deps
+DEPS=${1:-$CURRDIR/deps}
 BUILD=$DEPS/build
-
-
-if [ -e "$DEPS" ]; then
-  rm $DEPS -rf
-fi
 
 cd $CURRDIR
 
@@ -66,22 +61,6 @@ fi
 
 #Install the libraries into maven local repository
 
-mvn install:install-file -Dfile=$DEPS/dbus-java-bin-$DBUSJAVA.jar \
-                         -DgroupId=org.freedesktop.dbus \
-                         -DartifactId=dbus-java \
-                         -Dversion=$DBUSJAVA \
-                         -Dpackaging=jar \
-                         -DgeneratePom=true \
-                         -DlocalRepositoryPath=$DEPS
-
-mvn install:install-file -Dfile=$DEPS/libdbus-java-$DBUSJAVA.jar \
-                         -DgroupId=org.freedesktop.dbus \
-                         -DartifactId=libdbus-java \
-                         -Dversion=$DBUSJAVA \
-                         -Dpackaging=jar \
-                         -DgeneratePom=true \
-                         -DlocalRepositoryPath=$DEPS
-
 mvn install:install-file -Dfile=$DEPS/unix-0.5.jar \
                          -DgroupId=cx.ath.matthew \
                          -DartifactId=unix \
@@ -126,6 +105,22 @@ mvn install:install-file -Dfile=$DEPS/io-0.1.jar \
                          -DgroupId=cx.ath.matthew \
                          -DartifactId=io \
                          -Dversion=0.1 \
+                         -Dpackaging=jar \
+                         -DgeneratePom=true \
+                         -DlocalRepositoryPath=$DEPS
+
+mvn install:install-file -Dfile=$DEPS/dbus-java-bin-$DBUSJAVA.jar \
+                         -DgroupId=org.freedesktop.dbus \
+                         -DartifactId=dbus-java \
+                         -Dversion=$DBUSJAVA \
+                         -Dpackaging=jar \
+                         -DgeneratePom=true \
+                         -DlocalRepositoryPath=$DEPS
+
+mvn install:install-file -Dfile=$DEPS/libdbus-java-$DBUSJAVA.jar \
+                         -DgroupId=org.freedesktop.dbus \
+                         -DartifactId=libdbus-java \
+                         -Dversion=$DBUSJAVA \
                          -Dpackaging=jar \
                          -DgeneratePom=true \
                          -DlocalRepositoryPath=$DEPS
