@@ -205,4 +205,7 @@ public interface Device extends DBusInterface {
 		}
 
 	}
+
+  @org.freedesktop.DBus.Description("Get list of all sensors")
+  public void GetServices() throws DBusException;
 }

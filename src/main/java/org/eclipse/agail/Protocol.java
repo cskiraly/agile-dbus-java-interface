@@ -181,4 +181,12 @@ public interface Protocol extends DBusInterface {
 		}
 
 	}
+
+	/**
+	 * Get the list of Services / sensors
+	 *
+	 * @param deviceAddress
+	 */
+	@org.freedesktop.DBus.Description("Return the list of sensors with charateristics")
+	public Map<String, List<String>> GetSensors(String deviceAddress) throws DBusException;
 }
