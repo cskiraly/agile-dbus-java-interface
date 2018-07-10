@@ -4,6 +4,8 @@
 
 #!bin/sh
 
+set -e
+
 CURRDIR=`pwd`
 DEPS=${1:-$CURRDIR/deps}
 BUILD=$DEPS/build
