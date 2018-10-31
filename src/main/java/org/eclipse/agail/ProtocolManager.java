@@ -22,6 +22,7 @@ import org.freedesktop.dbus.exceptions.DBusException;
 import org.eclipse.agail.object.DeviceOverview;
 import org.eclipse.agail.object.DiscoveryStatus;
 import org.eclipse.agail.object.ProtocolOverview;
+import org.eclipse.agail.protocols.config.ProtocolConfig;
 
 /**
  * @author dagi AGILE Protocol Manager Interface
@@ -95,5 +96,11 @@ public interface ProtocolManager extends DBusInterface {
     }
 
   }
+  
+  @org.freedesktop.DBus.Description("Gets configurations of protocol")
+  public List<ProtocolConfig> GetProtocolConfigurations(String protocolId);
+  
+  @org.freedesktop.DBus.Description("Sets configurations of protocol")
+  public void SetProtocolConfigurations(String protocolId, List<ProtocolConfig> protocolConfigs);
 
 }

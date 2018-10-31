@@ -22,6 +22,7 @@ import org.freedesktop.dbus.exceptions.DBusException;
 
 import org.eclipse.agail.object.DeviceOverview;
 import org.eclipse.agail.object.StatusType;
+import org.eclipse.agail.protocols.config.ProtocolConfig;
 
 /**
  * Agile BLE Protocol interface
@@ -181,4 +182,10 @@ public interface Protocol extends DBusInterface {
 		}
 
 	}
+	
+	@org.freedesktop.DBus.Description("Save configurations of protocol")
+	public void SetConfiguration(List<ProtocolConfig> configs);
+	
+	@org.freedesktop.DBus.Description("Get Configurations of protocol")
+	public List<ProtocolConfig> GetConfiguration();
 }
